@@ -1,0 +1,45 @@
+$schema: https://raw.githubusercontent.com/oyvindberg/bleep/master/schema.json
+$version: 0.0.9
+jvm:
+  name: graalvm-java17:22.3.1
+projects:
+  scripts:
+    dependencies: io.github.nafg.bleep-plugins::bleep-plugin-publish:0.0.2
+    extends:
+    - template-common
+    - template-scala-3
+  tcn:
+    dependencies:
+    - dev.zio::zio-parser:0.1.10
+    - org.postgresql:postgresql:42.7.4
+    extends: template-cross-all
+  tcn-slick:
+    dependencies: com.typesafe.slick::slick:3.5.2
+    dependsOn: tcn
+    extends: template-cross-all
+scripts:
+  publish:
+    main: io.github.nafg.bleep.plugins.publish.Publish
+    project: scripts
+templates:
+  template-common:
+    platform:
+      name: jvm
+    scala:
+      options: -encoding utf8 -feature -unchecked
+      strict: true
+    source-layout: cross-pure
+  template-cross-all:
+    cross:
+      jvm213:
+        extends: template-scala-2
+      jvm3:
+        extends: template-scala-3
+    extends: template-common
+  template-scala-2:
+    scala:
+      options: -Xsource:3
+      version: 2.13.15
+  template-scala-3:
+    scala:
+      version: 3.3.4

@@ -1,0 +1,18 @@
+groupId: io.github.nafg.tcn
+projects:
+  - tcn
+  - tcn-slick
+sonatype:
+  profileName: io.github.nafg
+  bundleName: tcn
+info:
+  description: A ZIO service to LISTEN to postgres `tcn` triggered change notifications
+  homePage: https://github.com/io-github-nafg/zio-tcn
+  developers:
+    - name: Naftoli Gugenheim
+      id: nafg
+      url: https://github.com/nafg
+  licenseInfo:
+    - name: Apache-2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.txt
+      distribution: repo

@@ -4,7 +4,7 @@ jvm:
   name: graalvm-java17:22.3.1
 projects:
   scripts:
-    dependencies: io.github.nafg.bleep-plugins::bleep-plugin-publish:0.0.2
+    dependencies: io.github.nafg.bleep-plugins::bleep-plugin-publish:0.0.5
     extends:
     - template-common
     - template-scala-3

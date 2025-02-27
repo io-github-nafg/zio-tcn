@@ -44,10 +44,10 @@ object TriggeredChangeNotificationService {
       .timeoutTo(10.minutes)(stream)
 
   val layer: ZLayer[ConnectionFactory, Nothing, TriggeredChangeNotificationService] =
-    ZLayer {
+    ZLayer.scoped {
       for {
         hub <- Hub.sliding[TriggeredChangeNotification](1024)
-        _   <- stream.runForeach(hub.publish(_)).fork
+        _   <- stream.runForeach(hub.publish(_)).forkScoped
       } yield new TriggeredChangeNotificationService {
         override def stream(tableName: String, keyColumnName: String) =
           ZStream

@@ -1,6 +1,6 @@
 pull_request_rules:
   - name: Automatic merge
-    description: Merge when PR passes all branch protection and has label automerge
+    description: Merge renovate PRs
     conditions:
       - author=renovate[bot]
       - check-success=Compile

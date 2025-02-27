@@ -10,7 +10,7 @@ projects:
     - template-scala-3
   tcn:
     dependencies:
-    - dev.zio::zio-parser:0.1.10
+    - dev.zio::zio-parser:0.1.11
     - org.postgresql:postgresql:42.7.4
     extends: template-cross-all
   tcn-slick:

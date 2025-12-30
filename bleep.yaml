@@ -14,7 +14,7 @@ projects:
     - org.postgresql:postgresql:42.7.8
     extends: template-cross-all
   tcn-slick:
-    dependencies: com.typesafe.slick::slick:3.5.2
+    dependencies: com.typesafe.slick::slick:3.6.1
     dependsOn: tcn
     extends: template-cross-all
 scripts:

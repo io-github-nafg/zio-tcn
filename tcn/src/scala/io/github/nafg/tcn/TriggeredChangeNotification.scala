@@ -2,7 +2,6 @@ package io.github.nafg.tcn
 
 import zio.parser.*
 
-
 case class TriggeredChangeNotification(
   tableName: String,
   operation: TriggeredChangeNotification.Trigger,
@@ -16,12 +15,11 @@ object TriggeredChangeNotification {
     case object Delete extends Trigger
   }
 
-
   /** Parses a quoted string.
-   *
-   * A single matching quote ends the string; if the quote is repeated it is treated as an escape and treated as a
-   * single quote.
-   */
+    *
+    * A single matching quote ends the string; if the quote is repeated it is treated as an escape and treated as a
+    * single quote.
+    */
   private def quotedParser(quote: Char): Parser[String, Char, String] = {
     val unescape =
       Parser.string(quote.toString + quote.toString, quote.toString)
@@ -42,7 +40,7 @@ object TriggeredChangeNotification {
       .char('D')
       .as(TriggeredChangeNotification.Trigger.Delete)
 
-  val parser                =
+  val parser =
     (doubleQuotedStringParser <~ Parser.char(',')) ~
       (operationParser <~ Parser.char(',')) ~ keyValuePairsParser
 }
